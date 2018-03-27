@@ -1,11 +1,16 @@
 #!/usr/bin/env python
+import os
 import cv2
 import sys
 from time import sleep
 
 cascPath = "database.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
-video_capture = cv2.VideoCapture(0)
+if int(os.environ['camera']) == 0:
+   video_capture = cv2.VideoCapture('/dev/video13')
+else:
+   video_capture = cv2.VideoCapture(0)
+#video_capture = cv2.VideoCapture(0)
 anterior = 0
 
 while True:

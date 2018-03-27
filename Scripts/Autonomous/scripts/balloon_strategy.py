@@ -49,8 +49,8 @@ class BalloonStrategy(object):
     def __init__(self):
 
         # connect to vehicle with dronekit
-        #self.vehicle = self.get_vehicle_with_dronekit()
-        self.vehicle = connect('udp:127.0.0.1:14550', wait_ready=False)
+        self.vehicle = self.get_vehicle_with_dronekit()
+        #self.vehicle = connect('udp:127.0.0.1:14550', wait_ready=False)
 
         # initialised flag
         self.home_initialised = False
@@ -159,7 +159,7 @@ class BalloonStrategy(object):
         connection_baud = balloon_config.config.get_integer('dronekit','baud',921600)
         print("connecting to vehicle on %s, baud=%d" % (connection_str, connection_baud))
         #return connect(connection_str, baud=connection_baud)
-        return connect('tcp:127.0.0.1:5760', wait_ready=False)
+        return connect(os.environ['protocol']+":"+os.environ['ip']+":"+os.environ['port'], wait_ready=False)
         print("connected to vehicle")
 
     # fetch_mission - fetch mission from flight controller

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 import cv2
 import argparse
 from operator import xor
@@ -49,8 +50,12 @@ def main():
 
     range_filter = args['filter'].upper()
 
-    camera = cv2.VideoCapture("/dev/video13")
-
+    #camera = cv2.VideoCapture("/dev/video13")
+    if int(os.environ['camera']) == 0:
+        camera = cv2.VideoCapture('/dev/video13')
+    else:
+        camera = cv2.VideoCapture(0)
+    
     setup_trackbars(range_filter)
 
     while True:

@@ -12,7 +12,11 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture("/dev/video13")
+if int(os.environ['camera']) == 0:
+   cap = cv2.VideoCapture('/dev/video13')
+else:
+   cap = cv2.VideoCapture(0)
+
 cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
 

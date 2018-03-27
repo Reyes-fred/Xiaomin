@@ -1,8 +1,9 @@
 #!/usr/bin/python
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 import time
+import os
 
-vehicle = connect('tcp:127.0.0.1:5760', wait_ready=False)
+vehicle = connect(os.environ['protocol']+":"+os.environ['ip']+":"+os.environ['port'], wait_ready=False)
 print("Arming motors:")
 vehicle.mode    = VehicleMode("GUIDED")
 vehicle.armed   = True

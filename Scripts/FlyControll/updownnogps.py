@@ -3,13 +3,13 @@ from dronekit import connect, VehicleMode, LocationGlobal, LocationGlobalRelativ
 from pymavlink import mavutil
 import time
 import math
-
+import os
 import threading
 
 current_thrust = 0.5
 
 # Connect to the Vehicle
-vehicle = connect("tcp:192.168.1.120:5760", wait_ready=True)
+vehicle = connect(os.environ['protocol']+":"+os.environ['ip']+":"+os.environ['port'], wait_ready=True)
 
 def arm_and_takeoff_nogps(aTargetAltitude):
 

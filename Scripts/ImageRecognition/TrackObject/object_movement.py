@@ -4,6 +4,7 @@ import numpy as np
 import argparse
 import imutils
 import cv2
+import os
 
 # Define the parameters for args
 ap = argparse.ArgumentParser()
@@ -20,8 +21,11 @@ pts = deque(maxlen=args["buffer"])
 counter = 0
 direction = ""
 
-camera = cv2.VideoCapture("/dev/video13")
-
+#camera = cv2.VideoCapture("/dev/video13")
+if int(os.environ['camera']) == 0:
+    camera = cv2.VideoCapture('/dev/video13')
+else:
+    camera = cv2.VideoCapture(0)
 while True:
 	# Read each frame of the camera
 	(grabbed, frame) = camera.read()

@@ -48,7 +48,10 @@ class SmartCameraVideo:
     # get_camera - initialises camera and returns VideoCapture object 
     def get_camera(self):
         # setup video capture
-        self.camera = cv2.VideoCapture("/dev/video13")
+	 if int(os.environ['camera']) == 0:
+             self.camera = cv2.VideoCapture('/dev/video13')
+         else:
+             self.camera = cv2.VideoCapture(0)
         self.camera.set(cv2.CAP_PROP_FRAME_WIDTH,self.img_width)
         self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT,self.img_height)
 

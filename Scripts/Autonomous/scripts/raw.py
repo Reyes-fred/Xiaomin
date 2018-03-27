@@ -22,7 +22,7 @@
 
 import cv2
 import numpy as np
-
+import os
 # define image resolution
 
 img_width = 640
@@ -30,7 +30,10 @@ img_height = 480
 
 # setup video capture
 
-video_capture = cv2.VideoCapture(0)
+if int(os.environ['camera']) == 0:
+    video_capture = cv2.VideoCapture('/dev/video13')
+else:
+    video_capture = cv2.VideoCapture(0)
 video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, img_width)
 video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, img_height)
 

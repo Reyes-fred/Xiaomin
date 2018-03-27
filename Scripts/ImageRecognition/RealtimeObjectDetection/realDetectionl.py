@@ -6,7 +6,7 @@ import argparse
 import imutils
 import time
 import cv2
-
+import os
 # Construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--prototxt", required=True,
@@ -30,7 +30,11 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 
 # Initialize the video stream
 print("Starting video stream...")
-vs = VideoStream("/dev/video13").start()
+if int(os.environ['camera']) == 0:
+   vs = VideoStream('/dev/video13').start()
+else:
+   vs.VideoStream(0).start()
+#vs = VideoStream("/dev/video13").start()
 time.sleep(2.0)
 fps = FPS().start()
 
