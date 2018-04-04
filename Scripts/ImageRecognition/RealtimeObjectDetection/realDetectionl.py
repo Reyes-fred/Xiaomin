@@ -30,11 +30,12 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 
 # Initialize the video stream
 print("Starting video stream...")
+vs = "" 
 if int(os.environ['camera']) == 0:
    vs = VideoStream('/dev/video13').start()
 else:
-   vs.VideoStream(0).start()
-#vs = VideoStream("/dev/video13").start()
+   vs = VideoStream(0).start()
+#vs = VideoStream(0).start()
 time.sleep(2.0)
 fps = FPS().start()
 

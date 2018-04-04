@@ -13,8 +13,8 @@ ap.add_argument("-b", "--buffer", type=int, default=32,
 args = vars(ap.parse_args())
 
 # Define the rgb  upper an lower  data  that you previously get from objectdata.py
-objectLower = (84, 15, 60)
-objectUpper = (144, 147, 136)
+objectLower = (0,67, 116)
+objectUpper = (255, 232, 240)
 
 # Initialize the list of tracked points, the frame counter and the coordinate deltas
 pts = deque(maxlen=args["buffer"])
