@@ -4,7 +4,7 @@ import cv2
 import sys
 from time import sleep
 
-cascPath = "database.xml"
+cascPath = "/Xiaomin/Scripts/ImageRecognition/FaceDection/database.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 if int(os.environ['camera']) == 0:
    video_capture = cv2.VideoCapture('/dev/video13')
